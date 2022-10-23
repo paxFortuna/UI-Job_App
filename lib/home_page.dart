@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'util/job_card.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -15,18 +17,19 @@ class _HomePageState extends State<HomePage> {
     _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      appBar: AppBar(
-        leading: Image.asset('lib/icons/menu_from_left.png', scale: 5),
-        title: const Text('JOB APP'),
-      ),
+      // appBar: AppBar(
+      //   leading: Image.asset('lib/icons/menu_from_left.png', scale: 5),
+      //   title: const Text('JOB APP'),
+      // ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // const SizedBox(height: 50),
+          const SizedBox(height: 50),
           // abb bar
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -45,21 +48,17 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
-
-
           // discover a new path
           const Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.only(left: 20, top: 10, bottom: 12),
             child: Text(
               "Discover a New Path",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
             ),
           ),
 
-
-
           // search bar
-          const SizedBox(height: 20),
+          const SizedBox(height: 8),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
@@ -104,17 +103,42 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.grey[200],
                       border: Border.all(color: Colors.white),
                       //color: Colors.grey[800],
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   child: Image.asset('lib/icons/preferences.png'),
-                    // color: Colors.white,),
+                  // color: Colors.white,),
                 ),
               ],
             ),
           ),
 
           // for you -> job cards
+          const SizedBox(height: 25),
+          const Padding(
+            padding: EdgeInsets.only(left: 20.0),
+            child: Text(
+              'For you',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 26,
+              ),
+            ),
+          ),
 
+          const SizedBox(height: 25),
+          Container(
+            height: 200,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return JobCard(
+                    companyName: 'Uber',
+                    jobTitle: 'UI Designer',
+                    logoImagePath: 'lib/icons/uber.png',
+                    hourlyRate: 45,
+                  );
+                }),
+          )
 
           // recently add -> job titles
         ],
