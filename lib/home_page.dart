@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'util/job_card.dart';
+import 'util/recent_job_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,6 +12,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _controller = TextEditingController();
+  final List jobsForYou = [
+    // [ companyName, jobTitle, logoImagePath, hourlyRate ]
+    ['Uber', 'UI Designer', 'lib/icons/uber.png', 45],
+    ['Google', 'Product Dev', 'lib/icons/google.png', 85],
+    ['Apple', 'Softwart Eng.', 'lib/icons/apple.png', 95]
+  ];
 
   @override
   void dispose() {
@@ -129,18 +136,36 @@ class _HomePageState extends State<HomePage> {
             height: 200,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-                itemCount: 3,
+                itemCount: jobsForYou.length,
                 itemBuilder: (context, index) {
                   return JobCard(
-                    companyName: 'Uber',
-                    jobTitle: 'UI Designer',
-                    logoImagePath: 'lib/icons/uber.png',
-                    hourlyRate: 45,
+                    companyName: jobsForYou[index][0],
+                    jobTitle: jobsForYou[index][1],
+                    logoImagePath: jobsForYou[index][2],
+                    hourlyRate: jobsForYou[index][3],
                   );
                 }),
-          )
+          ),
 
           // recently add -> job titles
+          const SizedBox(height: 25),
+          const Padding(
+            padding: EdgeInsets.only(left: 20.0),
+            child: Text(
+              'Recently Added',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 26,
+              ),
+            ),
+          ),
+          const SizedBox(height: 25),
+
+          ListView.builder(
+              itemCount: 10,
+              itemBuilder: (context, index){
+              return RecentJobCard();
+          })
         ],
       ),
     );
