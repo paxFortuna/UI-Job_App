@@ -21,8 +21,8 @@ class JobCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: Container(
-          width: 200,
-          padding: const EdgeInsets.all(12),
+          width: 190,
+          padding: const EdgeInsets.all(4),
           color: Colors.grey[200],
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,13 +32,13 @@ class JobCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    height: 70,
+                    height: 60,
                     child: Image.asset(logoImagePath),
                   ),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     child: Container(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(6),
                       color: Colors.grey[500],
                       child: const Text(
                         'Part Time',

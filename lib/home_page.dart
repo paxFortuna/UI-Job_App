@@ -35,14 +35,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      // appBar: AppBar(
-      //   leading: Image.asset('lib/icons/menu_from_left.png', scale: 5),
-      //   title: const Text('JOB APP'),
-      // ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 50),
+
           // abb bar
           Padding(
             padding: const EdgeInsets.all(20.0),
@@ -113,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                   height: 50,
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      color: Colors.grey[800],
                       border: Border.all(color: Colors.white),
                       //color: Colors.grey[800],
                       borderRadius: BorderRadius.circular(12)),
