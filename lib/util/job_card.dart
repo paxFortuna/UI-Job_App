@@ -32,7 +32,7 @@ class JobCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    height: 60,
+                    height: 70,
                     child: Image.asset(logoImagePath),
                   ),
                   ClipRRect(

@@ -18,6 +18,12 @@ class _HomePageState extends State<HomePage> {
     ['Google', 'Product Dev', 'lib/icons/google.png', 85],
     ['Apple', 'Softwart Eng.', 'lib/icons/apple.png', 95]
   ];
+  final List recentJobsForYou = [
+    // [ companyName, jobTitle, logoImagePath, hourlyRate ]
+    ['Nike', 'Web Designer', 'lib/icons/triangle.png', 25],
+    ['Apple', 'Software Eng.', 'lib/icons/apple.png', 45],
+    ['Google', 'Product Dev.', 'lib/icons/google.png', 65]
+  ];
 
   @override
   void dispose() {
@@ -135,7 +141,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             height: 200,
             child: ListView.builder(
-              scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.horizontal,
                 itemCount: jobsForYou.length,
                 itemBuilder: (context, index) {
                   return JobCard(
@@ -159,13 +165,23 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          const SizedBox(height: 25),
+          // const SizedBox(height: 25),
 
-          ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index){
-              return RecentJobCard();
-          })
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListView.builder(
+                  itemCount: recentJobsForYou.length,
+                  itemBuilder: (context, index) {
+                    return RecentJobCard(
+                      companyName: recentJobsForYou[index][0],
+                      jobTitle: recentJobsForYou[index][1],
+                      logoImagePath: recentJobsForYou[index][2],
+                      hourlyRate: recentJobsForYou[index][3],
+                    );
+                  }),
+            ),
+          )
         ],
       ),
     );
